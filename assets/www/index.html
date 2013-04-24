@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Notification Example</title>
+
+    <script type="text/javascript" charset="utf-8" src="cordova-2.6.0.js"></script>
+	<script type="text/javascript" charset="utf-8" src="statusbarnotification.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+    // Wait for Cordova to load
+    //
+    document.addEventListener("deviceready", onDeviceReady, false);
+
+    // Cordova is ready
+    //
+    function onDeviceReady() {
+        // Empty
+    }
+
+    // alert dialog dismissed
+    function alertDismissed() {
+        // do something
+    }
+
+    // Show a custom alertDismissed
+    //
+    function showAlert() {
+        navigator.notification.alert(
+            'You are the winner!',  // message
+            alertDismissed,         // callback
+            'Game Over',            // title
+            'Done'                  // buttonName
+        );
+    }
+	
+	
+	var aa = setInterval(function(){
+		window.plugins.statusBarNotification.notify("Put your title here", "Put your message here");
+	},5000);
+	
+    </script>
+  </head>
+  <body>
+    <p><a href="#" onclick="showAlert(); return false;">Show Alert</a></p>
+    <a href="#" onclick='window.plugins.statusBarNotification.notify("Put your title here", "Put your message here");return false;'>Click me!</a>
+    
+    <a href="#" onclick="clearInterval(aa)">stop</a>
+    
+  </body>
+</html>
